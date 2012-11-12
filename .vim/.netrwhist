@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/michaeldcruz/.bash/aliases'
+let g:netrw_dirhist_2='/Users/michaeldcruz/development/trunkclub/trunkclub'
+let g:netrw_dirhist_3='/Users/michaeldcruz/development/trunkclub/confidence'

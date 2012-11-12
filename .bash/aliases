@@ -1,0 +1,22 @@
+# Git Aliases
+alias gch='git checkout $1'
+
+# Trunk Club
+alias go-recommendations="title ssh-recommendations && ssh ubuntu@ec2-50-112-59-159.us-west-2.compute.amazonaws.com"
+alias go-jenkins="title ssh-jenkins && ssh jenkins@107.22.219.34"
+alias go-resources="title ssh-resources && ssh trunkclub@resources.trunkclub.com"
+alias go-qbwc="title ssh-qbwc && ssh trunkclub@qbwc.trunkclub.com"
+
+# Trunk Club RackSpace Servers
+alias go-hermes-prod="ssh root@198.101.154.111"
+
+alias cd-tc='cd /Users/michaeldcruz/development/trunkclub/trunkclub'
+alias cd-fu='cd /Users/michaeldcruz/development/trunkclub/futura'
+alias cd-he='cd /Users/michaeldcruz/development/trunkclub/hermes'
+
+# Personal
+alias go-spark-db="ssh mike@67.207.139.186"
+alias go-spark-web="ssh mike@67.207.132.208"
+
+# VIM Configurations
+alias nerd='vim -c NERDTree'

@@ -1,43 +1,39 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+alias wget="curl -O"
 
-# Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-	[ -r "$file" ] && source "$file"
-done
-unset file
+c_cyan=`tput setaf 6`
+c_red=`tput setaf 1`
+c_green=`tput setaf 2`
+c_sgr0=`tput sgr0`
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+parse_git_branch ()
+{
+	if git rev-parse --git-dir >/dev/null 2>&1
+	then
+		gitver=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+	else
+		return 0
+	fi
+	echo -e $gitver
+}
 
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend
+branch_color ()
+{
+	if git rev-parse --git-dir >/dev/null 2>&1
+	then
+		color=""
+		if git diff --quiet 2>/dev/null >&2
+		then
+			color="${c_green}"
+		else
+			color=${c_red}
+		fi
+	else
+		return 0
+	fi
+	echo -ne $color
+}
 
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
-
-# Enable some Bash 4 features when possible:
-# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
-# * Recursive globbing, e.g. `echo **/*.txt`
-for option in autocd globstar; do
-	shopt -s "$option" 2> /dev/null
-done
-
-# Prefer US English and use UTF-8
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US"
-
-# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
-
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
-
-# If possible, add tab completion for many more commands
-[ -f /etc/bash_completion ] && source /etc/bash_completion
+PS1='[\[$(branch_color)\]$(parse_git_branch)\[${c_sgr0}\]] \u@\[${c_green}\]\w\[${c_sgr0}\]: '
