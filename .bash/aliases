@@ -11,6 +11,8 @@ alias go-qbwc="title ssh-qbwc && ssh trunkclub@qbwc.trunkclub.com"
 alias go-hermes-prod="ssh root@198.101.154.111"
 
 alias cd-tc='cd /Users/michaeldcruz/development/trunkclub/trunkclub'
+alias cd-sk='cd /Users/michaeldcruz/development/trunkclub/skyfall'
+alias cd-co='cd /Users/michaeldcruz/development/trunkclub/confidence'
 alias cd-fu='cd /Users/michaeldcruz/development/trunkclub/futura'
 alias cd-he='cd /Users/michaeldcruz/development/trunkclub/hermes'
 
