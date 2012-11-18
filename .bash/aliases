@@ -10,6 +10,7 @@ alias go-qbwc="title ssh-qbwc && ssh trunkclub@qbwc.trunkclub.com"
 # Trunk Club RackSpace Servers
 alias go-hermes-prod="ssh root@198.101.154.111"
 
+alias cd-mi='cd /Users/michaeldcruz/development/trunkclub/minotaur'
 alias cd-tc='cd /Users/michaeldcruz/development/trunkclub/trunkclub'
 alias cd-sk='cd /Users/michaeldcruz/development/trunkclub/skyfall'
 alias cd-co='cd /Users/michaeldcruz/development/trunkclub/confidence'
